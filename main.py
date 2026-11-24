@@ -11,6 +11,10 @@ ENTRY = (
     "It still asked me if it was funny."
 )
 
+# The gate allows 1 to 200 characters of UTF-8 text; refuse to write
+# anything outside it rather than submit an entry that cannot be judged.
+assert 1 <= len(ENTRY) <= 200, f"entry is {len(ENTRY)} chars, gate is 1-200"
+
 
 def main() -> None:
     os.makedirs("/output", exist_ok=True)
